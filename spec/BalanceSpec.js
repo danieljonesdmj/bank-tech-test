@@ -52,14 +52,12 @@ describe('Balance', function() {
   it('adds withdrawal transaction details to summary', function() {
     balance.accountBalance = 50
     balance.withdraw('13/08/2018', 20)
-    balance.addRow()
     expect(balance.accountSummary).toEqual(['13/08/2018 ||   || 20 || 30'])
   })
 
   it('adds deposit transaction details to summary', function() {
     balance.accountBalance = 50
     balance.deposit('13/08/2018', 20)
-    balance.addRow()
     expect(balance.accountSummary).toEqual(['13/08/2018 || 20 ||   || 70'])
   })
 })
