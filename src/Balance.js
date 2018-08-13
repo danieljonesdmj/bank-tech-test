@@ -9,10 +9,10 @@ Balance.prototype.deposit = function(date, num) {
   this.accountSummary.push(['Credit', numString, date])
 }
 
-Balance.prototype.withdraw = function (num) {
+Balance.prototype.withdraw = function (date, num) {
     this.accountBalance -= num;
     var numString = num.toString();
-    this.accountSummary.push(['Debit', numString])
+    this.accountSummary.push(['Debit', numString, date])
 };
 
 Balance.prototype.printAccountSummary = function () {

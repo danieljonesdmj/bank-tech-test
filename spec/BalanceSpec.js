@@ -15,7 +15,7 @@ describe('Balance', function() {
 
   it('can be withdrawn from', function() {
     balance.accountBalance = 10
-    balance.withdraw(5)
+    balance.withdraw('13/08/2018', 5)
     expect(balance.accountBalance).toEqual(5)
   })
 
@@ -26,9 +26,9 @@ describe('Balance', function() {
 
   it('holds history of transactions', function() {
     balance.accountBalance = 100
-    balance.withdraw(20)
-    balance.withdraw(10)
+    balance.withdraw('13/08/2018', 20)
+    balance.withdraw('13/08/2018', 10)
     balance.deposit('13/08/2018', 50)
-    expect(balance.accountSummary).toContain(['Debit', '20'], ['Debit', '10'], ['Credit', '50', '13/08/2018'])
+    expect(balance.accountSummary).toContain(['Debit', '20', '13/08/2018'], ['Debit', '10', '13/08/2018'], ['Credit', '50', '13/08/2018'])
   })
 })
