@@ -25,21 +25,29 @@ Balance.prototype.withdraw = function (date, num) {
 };
 
 Balance.prototype.printAccountSummary = function () {
-  return 'Balance ' + this.accountBalance.toFixed(2);
+  return this.printHeaders() + this.printTransactions()
+};
+
+Balance.prototype.printTransactions = function () {
+  return this.accountSummary.join('\n')
 };
 
 Balance.prototype.printHeaders = function () {
-  return 'date || credit || debit || balance '
+  return 'date || credit || debit || balance ' + '\n'
 };
 
 Balance.prototype.addRow = function () {
   for (var i = 0; i < this.transactionType.length; i++) {
     if (this.transactionType[i] === 'Debit') {
-      var output = this.transactionDate[i].toString() + ' ||   || ' + this.transactionAmount[i] + ' || ' + this.accountBalance.toString();
-        this.accountSummary.push(output)
-    } else if ( this.transactionType[i] === 'Credit') {
-      var output = this.transactionDate[i].toString() + ' || ' + this.transactionAmount[i] + ' ||   || ' + this.accountBalance.toString();
-        this.accountSummary.push(output)
+      var debit = this.transactionDate[i].toString() + ' ||   || ' + this.transactionAmount[i] + ' || ' + this.accountBalance.toString();
+        this.accountBalance.length = i
+        this.accountSummary.length = i
+        this.accountSummary.push(debit)
+  } else if ( this.transactionType[i] === 'Credit') {
+      var credit = this.transactionDate[i].toString() + ' || ' + this.transactionAmount[i] + ' ||   || ' + this.accountBalance.toString();
+        this.accountBalance.length = i
+        this.accountSummary.length = i
+        this.accountSummary.push(credit)
       }
   }
 };

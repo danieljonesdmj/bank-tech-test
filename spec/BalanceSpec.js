@@ -19,11 +19,6 @@ describe('Balance', function() {
     expect(balance.accountBalance).toEqual(5)
   })
 
-  it('summary can be printed', function() {
-    balance.accountBalance = 100
-    expect(balance.printAccountSummary()).toEqual('Balance 100.00')
-  })
-
   it('holds history of transaction amounts', function() {
     balance.accountBalance = 100
     balance.withdraw('13/08/2018', 20)
@@ -33,7 +28,14 @@ describe('Balance', function() {
   })
 
   it('has headings for the account summary formatted', function() {
-    expect(balance.printHeaders()).toEqual('date || credit || debit || balance ')
+    expect(balance.printHeaders()).toEqual('date || credit || debit || balance ' + '\n')
+  })
+
+  it('full account summary can be printed', function() {
+    balance.accountBalance = 100
+    balance.withdraw('13/08/2018', 10)
+    balance.deposit('14/08/2018', 50)
+    expect(balance.printAccountSummary()).toEqual('date || credit || debit || balance ' + '\n' + '13/08/2018 ||   || 10 || 140' + '\n' + '14/08/2018 || 50 ||   || 140')
   })
 
   it('holds history of transaction dates', function() {
