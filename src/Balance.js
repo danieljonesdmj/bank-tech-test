@@ -3,6 +3,7 @@ function Balance(){
   this.transactionAmount = [];
   this.transactionDate = [];
   this.transactionType = [];
+  this.accountSummary = [];
 }
 
 Balance.prototype.deposit = function(date, num) {
@@ -27,4 +28,16 @@ Balance.prototype.printAccountSummary = function () {
 
 Balance.prototype.printHeaders = function () {
   return 'date || credit || debit || balance '
+};
+
+Balance.prototype.addRow = function () {
+  for (var i = 0; i < this.transactionType.length; i++) {
+    if (this.transactionType[i] === 'Debit') {
+      var output = this.transactionDate[i].toString() + ' ||   || ' + this.transactionAmount[i] + ' || ' + this.accountBalance.toString();
+        this.accountSummary.push(output)
+    } else if ( this.transactionType[i] === 'Credit') {
+      var output = this.transactionDate[i].toString() + ' || ' + this.transactionAmount[i] + ' ||   || ' + this.accountBalance.toString();
+        this.accountSummary.push(output)
+      }
+  }
 };
