@@ -24,15 +24,22 @@ describe('Balance', function() {
     expect(balance.printAccountSummary()).toEqual('Balance 100.00')
   })
 
-  it('holds history of transactions', function() {
+  it('holds history of transaction amounts', function() {
     balance.accountBalance = 100
     balance.withdraw('13/08/2018', 20)
     balance.withdraw('13/08/2018', 10)
     balance.deposit('13/08/2018', 50)
-    expect(balance.accountSummary).toContain(['20', '13/08/2018'], ['10', '13/08/2018'], ['50', '13/08/2018'])
+    expect(balance.transactionAmount).toEqual(['20', '10', '50'])
   })
 
   it('has headings for the account summary formatted', function() {
     expect(balance.printHeaders()).toEqual('date || credit || debit || balance ')
+  })
+
+  it('holds history of transaction dates', function() {
+    balance.withdraw('13/08/2018', 20)
+    balance.withdraw('13/08/2018', 10)
+    balance.deposit('14/08/2018', 50)
+    expect(balance.transactionDate).toEqual(['13/08/2018', '13/08/2018', '14/08/2018'])
   })
 })
