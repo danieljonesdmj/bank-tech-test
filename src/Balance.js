@@ -9,3 +9,7 @@ Balance.prototype.deposit = function(num) {
 Balance.prototype.withdraw = function (num) {
     this.accountBalance -= num;
 };
+
+Balance.prototype.printAccountSummary = function () {
+  return 'Balance ' + this.accountBalance.toFixed(2);
+};

@@ -18,4 +18,9 @@ describe('Balance', function() {
     balance.withdraw(5)
     expect(balance.accountBalance).toEqual(5)
   })
+
+  it('summary can be printed', function() {
+    balance.accountBalance = 100
+    expect(balance.printAccountSummary()).toEqual('Balance 100.00')
+  })
 })
