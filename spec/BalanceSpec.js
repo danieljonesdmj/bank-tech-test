@@ -12,4 +12,10 @@ describe('Balance', function() {
     balance.deposit(10)
     expect(balance.accountBalance).toEqual(10)
   })
+
+  it('can be withdrawn from', function() {
+    balance.accountBalance = 10
+    balance.withdraw(5)
+    expect(balance.accountBalance).toEqual(5)
+  })
 })
