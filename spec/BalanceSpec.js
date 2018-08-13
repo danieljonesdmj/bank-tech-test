@@ -31,4 +31,8 @@ describe('Balance', function() {
     balance.deposit('13/08/2018', 50)
     expect(balance.accountSummary).toContain(['Debit', '20', '13/08/2018'], ['Debit', '10', '13/08/2018'], ['Credit', '50', '13/08/2018'])
   })
+
+  it('has headings for the account summary formatted', function() {
+    expect(balance.printHeaders()).toEqual('date || credit || debit || balance ')
+  })
 })

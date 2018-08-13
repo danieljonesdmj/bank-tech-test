@@ -18,3 +18,7 @@ Balance.prototype.withdraw = function (date, num) {
 Balance.prototype.printAccountSummary = function () {
   return 'Balance ' + this.accountBalance.toFixed(2);
 };
+
+Balance.prototype.printHeaders = function () {
+  return 'date || credit || debit || balance '
+};
