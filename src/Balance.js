@@ -3,10 +3,10 @@ function Balance(){
   this.accountSummary = [];
 }
 
-Balance.prototype.deposit = function(num) {
+Balance.prototype.deposit = function(date, num) {
   this.accountBalance += num;
   var numString = num.toString();
-  this.accountSummary.push(['Credit', numString])
+  this.accountSummary.push(['Credit', numString, date])
 }
 
 Balance.prototype.withdraw = function (num) {

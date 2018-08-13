@@ -9,7 +9,7 @@ describe('Balance', function() {
   })
 
   it('can be deposited into', function() {
-    balance.deposit(10)
+    balance.deposit('13/08/2018', 10)
     expect(balance.accountBalance).toEqual(10)
   })
 
@@ -28,7 +28,7 @@ describe('Balance', function() {
     balance.accountBalance = 100
     balance.withdraw(20)
     balance.withdraw(10)
-    balance.deposit(50)
-    expect(balance.accountSummary).toContain(['Debit', '20'], ['Debit', '10'], ['Credit', '50'])
+    balance.deposit('13/08/2018', 50)
+    expect(balance.accountSummary).toContain(['Debit', '20'], ['Debit', '10'], ['Credit', '50', '13/08/2018'])
   })
 })
