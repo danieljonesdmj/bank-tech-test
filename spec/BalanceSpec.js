@@ -29,7 +29,7 @@ describe('Balance', function() {
     balance.withdraw('13/08/2018', 20)
     balance.withdraw('13/08/2018', 10)
     balance.deposit('13/08/2018', 50)
-    expect(balance.accountSummary).toContain(['Debit', '20', '13/08/2018'], ['Debit', '10', '13/08/2018'], ['Credit', '50', '13/08/2018'])
+    expect(balance.accountSummary).toContain(['20', '13/08/2018'], ['10', '13/08/2018'], ['50', '13/08/2018'])
   })
 
   it('has headings for the account summary formatted', function() {
