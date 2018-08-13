@@ -2,6 +2,7 @@ function Balance(){
   this.accountBalance = 0;
   this.transactionAmount = [];
   this.transactionDate = [];
+  this.transactionType = [];
 }
 
 Balance.prototype.deposit = function(date, num) {
@@ -9,6 +10,7 @@ Balance.prototype.deposit = function(date, num) {
   var numString = num.toString();
   this.transactionAmount.push(numString)
   this.transactionDate.push(date)
+  this.transactionType.push('Credit')
 }
 
 Balance.prototype.withdraw = function (date, num) {
@@ -16,6 +18,7 @@ Balance.prototype.withdraw = function (date, num) {
     var numString = num.toString();
     this.transactionAmount.push(numString)
     this.transactionDate.push(date)
+    this.transactionType.push('Debit')
 };
 
 Balance.prototype.printAccountSummary = function () {

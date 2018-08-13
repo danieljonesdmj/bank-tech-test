@@ -42,4 +42,10 @@ describe('Balance', function() {
     balance.deposit('14/08/2018', 50)
     expect(balance.transactionDate).toEqual(['13/08/2018', '13/08/2018', '14/08/2018'])
   })
+
+  it('holds history of transaction type', function() {
+    balance.withdraw('13/08/2018', 20)
+    balance.deposit('14/08/2018', 50)
+    expect(balance.transactionType).toEqual(['Debit', 'Credit'])
+  })
 })
