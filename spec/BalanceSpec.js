@@ -23,4 +23,12 @@ describe('Balance', function() {
     balance.accountBalance = 100
     expect(balance.printAccountSummary()).toEqual('Balance 100.00')
   })
+
+  it('holds history of transactions', function() {
+    balance.accountBalance = 100
+    balance.withdraw(20)
+    balance.withdraw(10)
+    balance.deposit(50)
+    expect(balance.accountSummary).toContain(['Debit', '20'], ['Debit', '10'], ['Credit', '50'])
+  })
 })
