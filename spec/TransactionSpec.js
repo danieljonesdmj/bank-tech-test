@@ -3,6 +3,7 @@ describe('Transaction', function() {
   beforeEach(function() {
     account = new Account();
     transaction = new Transaction();
+    printing = new Printing();
   })
 
   it('can be deposited into', function() {

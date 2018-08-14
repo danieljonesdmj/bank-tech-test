@@ -2,6 +2,7 @@ function Transaction(){
   this.transactionAmount = [];
   this.transactionDate = [];
   var account = new Account();
+  var printing = new Printing();
 }
 
 Transaction.prototype.deposit = function(date, num) {
@@ -22,12 +23,12 @@ Transaction.prototype.addRow = function () {
   for (var i = 0; i < this.transactionDate.length; i++) {
     if (this.transactionAmount[i] < 0) {
       var debit = this.transactionDate[i] + ' ||   || ' + (this.transactionAmount[i] + '.00') + ' || ' + (account.accountBalance[i] + '.00');
-        account.accountSummary.length = i
-        account.accountSummary.push(debit)
+        printing.accountSummary.length = i
+        printing.accountSummary.push(debit)
   } else if ( this.transactionAmount[i] > 0) {
       var credit = this.transactionDate[i] + ' || ' + (this.transactionAmount[i] + '.00') + ' ||   || ' + (account.accountBalance[i] + '.00');
-        account.accountSummary.length = i
-        account.accountSummary.push(credit)
+        printing.accountSummary.length = i
+        printing.accountSummary.push(credit)
       }
   }
 };
