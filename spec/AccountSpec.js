@@ -1,7 +1,6 @@
 describe('Account', function() {
-  it('balance should start at zero', function() {
+  it('balance should be empty on instantiation', function() {
     var account = new Account();
-    account.accountBalance = [0]
-    expect(account.accountBalance).toEqual([0])
+    expect(account.accountBalance).toEqual([])
   })
 })

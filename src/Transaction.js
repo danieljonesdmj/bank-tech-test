@@ -1,39 +1,39 @@
 function Transaction(){
-  this.transactionAmount = [];
+  this.transactionHistory = [];
   this.transactionDate = [];
-  var account = new Account();
-  var printing = new Printing();
+  this.account = new Account();
+  this.printer = new Printer();
 }
 
 Transaction.prototype.deposit = function(date, num) {
-  this.transactionAmount.push(num)
+  this.transactionHistory.push(num)
   this.transactionDate.push(date)
-  this.calculateBalance()
-  this.addRow();
+  this._calculateBalance()
+  this._addTransactionRow();
 }
 
 Transaction.prototype.withdraw = function (date, num) {
-    this.transactionAmount.push(-num)
+    this.transactionHistory.push(-num)
     this.transactionDate.push(date)
-    this.calculateBalance()
-    this.addRow();
+    this._calculateBalance()
+    this._addTransactionRow();
 };
 
-Transaction.prototype.addRow = function () {
+Transaction.prototype._addTransactionRow = function () {
   for (var i = 0; i < this.transactionDate.length; i++) {
-    if (this.transactionAmount[i] < 0) {
-      var debit = this.transactionDate[i] + ' ||   || ' + (this.transactionAmount[i] + '.00') + ' || ' + (account.accountBalance[i] + '.00');
-        printing.accountSummary.length = i
-        printing.accountSummary.push(debit)
-  } else if ( this.transactionAmount[i] > 0) {
-      var credit = this.transactionDate[i] + ' || ' + (this.transactionAmount[i] + '.00') + ' ||   || ' + (account.accountBalance[i] + '.00');
-        printing.accountSummary.length = i
-        printing.accountSummary.push(credit)
+    if (this.transactionHistory[i] < 0) {
+      var debit = this.transactionDate[i] + ' ||   || ' + (this.transactionHistory[i] + '.00') + ' || ' + (this.account.accountBalance[i] + '.00');
+        this.printer.accountSummary.length = i
+        this.printer.accountSummary.push(debit)
+  } else if ( this.transactionHistory[i] > 0) {
+      var credit = this.transactionDate[i] + ' || ' + (this.transactionHistory[i] + '.00') + ' ||   || ' + (this.account.accountBalance[i] + '.00');
+        this.printer.accountSummary.length = i
+        this.printer.accountSummary.push(credit)
       }
   }
 };
 
-Transaction.prototype.calculateBalance = function () {
-  var sum = this.transactionAmount.reduce((a, b) => a + b, 0);
-    account.accountBalance.push(sum);
+Transaction.prototype._calculateBalance = function () {
+  var sum = this.transactionHistory.reduce((a, b) => a + b, 0);
+    this.account.accountBalance.push(sum);
 };
