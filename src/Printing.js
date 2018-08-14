@@ -3,13 +3,13 @@ function Printing(){
 }
 
 Printing.prototype.printAccountSummary = function () {
-  return this.printHeaders() + this.printTransactions()
+  return this._printHeaders() + this._printTransactions()
 };
 
-Printing.prototype.printTransactions = function () {
+Printing.prototype._printTransactions = function () {
   return this.accountSummary.join('\n')
 };
 
-Printing.prototype.printHeaders = function () {
+Printing.prototype._printHeaders = function () {
   return 'date || credit || debit || balance ' + '\n'
 };
