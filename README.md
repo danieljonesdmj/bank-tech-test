@@ -15,23 +15,27 @@ cd bank-tech-test
 open SpecRunner.html
 ```
 
-###### Example usage:
+##### Example usage:
 
- # Create a new transaction
- > transactionInstance = new Transaction()
+```
+# Create a new transaction
+> transactionInstance = new Transaction()
 
- # Make a deposit
- > transactionInstance.deposit('13/08/2018', 20)
+# Make a deposit
+> transactionInstance.deposit('13/08/2018', 20)
 
- # Make a withdrawal
- > transactionInstance.withdraw('13/08/2018', 10)
+# Make a withdrawal
+> transactionInstance.withdraw('13/08/2018', 10)
 
- # Print a summary
- > transactionInstance.printer.printAccountSummary()
+# Print a summary
+> transactionInstance.printer.printAccountSummary()
+```
 
+```
 date || credit || debit || balance
 13/08/2018 || 20.00 ||   || 20.00
 13/08/2018 ||   || -10.00 || 10.00
+```
 
 ### Credits
 
