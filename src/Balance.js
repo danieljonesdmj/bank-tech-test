@@ -1,5 +1,5 @@
 function Balance(){
-  this.accountBalance = 0;
+  this.accountBalance = [];
   this.transactionAmount = [];
   this.transactionDate = [];
   this.transactionType = [];
@@ -7,21 +7,24 @@ function Balance(){
 }
 
 Balance.prototype.deposit = function(date, num) {
-  this.accountBalance += num;
-  var numString = num.toString();
-  this.transactionAmount.push(numString)
+  this.transactionAmount.push(num)
   this.transactionDate.push(date)
   this.transactionType.push('Credit')
+  this.calculateBalance()
   this.addRow();
 }
 
 Balance.prototype.withdraw = function (date, num) {
-    this.accountBalance -= num;
-    var numString = num.toString();
-    this.transactionAmount.push(numString)
+    this.transactionAmount.push(-num)
     this.transactionDate.push(date)
     this.transactionType.push('Debit')
+    this.calculateBalance()
     this.addRow();
+};
+
+Balance.prototype.calculateBalance = function () {
+  var sum = this.transactionAmount.reduce((a, b) => a + b, 0);
+    this.accountBalance.push(sum);
 };
 
 Balance.prototype.printAccountSummary = function () {
@@ -39,13 +42,11 @@ Balance.prototype.printHeaders = function () {
 Balance.prototype.addRow = function () {
   for (var i = 0; i < this.transactionType.length; i++) {
     if (this.transactionType[i] === 'Debit') {
-      var debit = this.transactionDate[i].toString() + ' ||   || ' + this.transactionAmount[i] + ' || ' + this.accountBalance.toString();
-        this.accountBalance.length = i
+      var debit = this.transactionDate[i].toString() + ' ||   || ' + this.transactionAmount[i] + ' || ' + this.accountBalance[i].toString();
         this.accountSummary.length = i
         this.accountSummary.push(debit)
   } else if ( this.transactionType[i] === 'Credit') {
-      var credit = this.transactionDate[i].toString() + ' || ' + this.transactionAmount[i] + ' ||   || ' + this.accountBalance.toString();
-        this.accountBalance.length = i
+      var credit = this.transactionDate[i].toString() + ' || ' + this.transactionAmount[i] + ' ||   || ' + this.accountBalance[i].toString();
         this.accountSummary.length = i
         this.accountSummary.push(credit)
       }
