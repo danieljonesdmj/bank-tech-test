@@ -1,12 +1,7 @@
 describe('Account', function() {
-
-  beforeEach(function() {
-    account = new Account();
-    transaction = new Transaction();
-  })
-
-  it('should start at zero', function() {
-    transaction.calculateBalance()
+  it('balance should start at zero', function() {
+    var account = new Account();
+    account.accountBalance = [0]
     expect(account.accountBalance).toEqual([0])
   })
 })

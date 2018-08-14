@@ -6,10 +6,12 @@ describe('Transaction', function() {
     printing = new Printing();
   })
 
-  it('can be deposited into', function() {
-    transaction.transactionAmount = [10, 20]
-    transaction.deposit('13/08/2018', 10)
-    expect(transaction.transactionAmount).toEqual([10, 20, 10])
+  describe('#deposit', function() {
+    it('can push transaction details into arrays', function() {
+      transaction.transactionAmount = [10, 20]
+      transaction.deposit('13/08/2018', 10)
+      expect(transaction.transactionAmount).toEqual([10, 20, 10])
+    })
   })
 
   it('can be withdrawn from', function() {
