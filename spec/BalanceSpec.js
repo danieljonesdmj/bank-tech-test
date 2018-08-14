@@ -36,7 +36,7 @@ describe('Balance', function() {
     balance.deposit('12/08/2018', 50)
     balance.withdraw('13/08/2018', 10)
     balance.withdraw('14/08/2018', 10)
-    expect(balance.printAccountSummary()).toEqual('date || credit || debit || balance ' + '\n' + '12/08/2018 || 50 ||   || 50' + '\n' + '13/08/2018 ||   || -10 || 40' + '\n' + '14/08/2018 ||   || -10 || 30')
+    expect(balance.printAccountSummary()).toEqual('date || credit || debit || balance ' + '\n' + '12/08/2018 || 50.00 ||   || 50.00' + '\n' + '13/08/2018 ||   || -10.00 || 40.00' + '\n' + '14/08/2018 ||   || -10.00 || 30.00')
   })
 
   it('holds history of transaction dates', function() {
@@ -55,11 +55,11 @@ describe('Balance', function() {
   it('adds withdrawal transaction details to summary', function() {
     balance.deposit('12/08/2018', 100)
     balance.withdraw('13/08/2018', 20)
-    expect(balance.accountSummary[1]).toEqual('13/08/2018 ||   || -20 || 80')
+    expect(balance.accountSummary[1]).toEqual('13/08/2018 ||   || -20.00 || 80.00')
   })
 
   it('adds deposit transaction details to summary', function() {
     balance.deposit('13/08/2018', 20)
-    expect(balance.accountSummary).toEqual(['13/08/2018 || 20 ||   || 20'])
+    expect(balance.accountSummary).toEqual(['13/08/2018 || 20.00 ||   || 20.00'])
   })
 })

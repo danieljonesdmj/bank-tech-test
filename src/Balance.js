@@ -42,11 +42,11 @@ Balance.prototype.printHeaders = function () {
 Balance.prototype.addRow = function () {
   for (var i = 0; i < this.transactionType.length; i++) {
     if (this.transactionType[i] === 'Debit') {
-      var debit = this.transactionDate[i].toString() + ' ||   || ' + this.transactionAmount[i] + ' || ' + this.accountBalance[i].toString();
+      var debit = this.transactionDate[i].toString() + ' ||   || ' + (this.transactionAmount[i] + '.00') + ' || ' + (this.accountBalance[i].toString() + '.00');
         this.accountSummary.length = i
         this.accountSummary.push(debit)
   } else if ( this.transactionType[i] === 'Credit') {
-      var credit = this.transactionDate[i].toString() + ' || ' + this.transactionAmount[i] + ' ||   || ' + this.accountBalance[i].toString();
+      var credit = this.transactionDate[i].toString() + ' || ' + (this.transactionAmount[i] + '.00') + ' ||   || ' + (this.accountBalance[i].toString() + '.00');
         this.accountSummary.length = i
         this.accountSummary.push(credit)
       }
