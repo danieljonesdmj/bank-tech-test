@@ -2,14 +2,12 @@ function Balance(){
   this.accountBalance = [];
   this.transactionAmount = [];
   this.transactionDate = [];
-  this.transactionType = [];
   this.accountSummary = [];
 }
 
 Balance.prototype.deposit = function(date, num) {
   this.transactionAmount.push(num)
   this.transactionDate.push(date)
-  this.transactionType.push('Credit')
   this.calculateBalance()
   this.addRow();
 }
@@ -17,7 +15,6 @@ Balance.prototype.deposit = function(date, num) {
 Balance.prototype.withdraw = function (date, num) {
     this.transactionAmount.push(-num)
     this.transactionDate.push(date)
-    this.transactionType.push('Debit')
     this.calculateBalance()
     this.addRow();
 };
@@ -40,13 +37,13 @@ Balance.prototype.printHeaders = function () {
 };
 
 Balance.prototype.addRow = function () {
-  for (var i = 0; i < this.transactionType.length; i++) {
-    if (this.transactionType[i] === 'Debit') {
-      var debit = this.transactionDate[i].toString() + ' ||   || ' + (this.transactionAmount[i] + '.00') + ' || ' + (this.accountBalance[i].toString() + '.00');
+  for (var i = 0; i < this.transactionDate.length; i++) {
+    if (this.transactionAmount[i] < 0) {
+      var debit = this.transactionDate[i] + ' ||   || ' + (this.transactionAmount[i] + '.00') + ' || ' + (this.accountBalance[i] + '.00');
         this.accountSummary.length = i
         this.accountSummary.push(debit)
-  } else if ( this.transactionType[i] === 'Credit') {
-      var credit = this.transactionDate[i].toString() + ' || ' + (this.transactionAmount[i] + '.00') + ' ||   || ' + (this.accountBalance[i].toString() + '.00');
+  } else if ( this.transactionAmount[i] > 0) {
+      var credit = this.transactionDate[i] + ' || ' + (this.transactionAmount[i] + '.00') + ' ||   || ' + (this.accountBalance[i] + '.00');
         this.accountSummary.length = i
         this.accountSummary.push(credit)
       }
