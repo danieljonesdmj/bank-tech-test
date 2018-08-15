@@ -1,19 +1,9 @@
 describe('Transaction', function() {
 
   beforeEach(function() {
-    account = new Account();
     transaction = new Transaction();
-    printer = new Printer();
   });
-
-  it('should instantiate a new account', function(){
-    expect(account).toEqual(transaction.account);
-  });
-
-  it('should instantiate a new printer', function(){
-    expect(printer).toEqual(transaction.printer);
-  });
-
+  
   describe('#deposit', function() {
     beforeEach(function() {
       transaction.transactionHistory = [10, 20];
