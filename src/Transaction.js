@@ -1,8 +1,8 @@
-function Transaction(){
+function Transaction(account = new Account(), printer = new Printer()){
   this.transactionHistory = [];
   this.transactionDate = [];
-  this.account = new Account();
-  this.printer = new Printer();
+  this.account = account;
+  this.printer = printer;
 }
 
 Transaction.prototype.deposit = function(date, num) {
