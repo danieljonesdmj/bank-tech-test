@@ -1,48 +1,48 @@
 describe('Transaction', function() {
 
   beforeEach(function() {
-    var account = () => {
+    var mockAccount = () => {
       accountBalance: []
     }
 
-    var printer = () => {
+    var mockPrinter = () => {
       accountSummary: []
     }
 
-    transaction = new Transaction(account.accountBalance, printer.accountSummary);
+    mockTransaction = new Transaction(mockAccount.accountBalance, mockPrinter.accountSummary);
   });
 
   describe('#deposit', function() {
     beforeEach(function() {
-      transaction.transactionHistory = [10, 20];
-      transaction.transactionDate = ['14/08/2018', '13/08/2018'];
+      mockTransaction.transactionHistory = [10, 20];
+      mockTransaction.transactionDate = ['14/08/2018', '13/08/2018'];
     });
 
     it('can push transaction amount into transactionHistory array', function() {
-      transaction.deposit('13/08/2018', 10);
-      expect(transaction.transactionHistory).toEqual([10, 20, 10]);
+      mockTransaction.deposit('13/08/2018', 10);
+      expect(mockTransaction.transactionHistory).toEqual([10, 20, 10]);
     });
 
     it('can push transaction date into transactionDate array', function() {
-      transaction.deposit('10/08/2018', 20);
-      expect(transaction.transactionDate).toEqual(['14/08/2018', '13/08/2018', '10/08/2018']);
+      mockTransaction.deposit('10/08/2018', 20);
+      expect(mockTransaction.transactionDate).toEqual(['14/08/2018', '13/08/2018', '10/08/2018']);
     });
   });
 
   describe('#withdraw', function() {
     beforeEach(function() {
-      transaction.transactionHistory = [10, 20];
-      transaction.transactionDate = ['14/08/2018', '13/08/2018'];
+      mockTransaction.transactionHistory = [10, 20];
+      mockTransaction.transactionDate = ['14/08/2018', '13/08/2018'];
     });
 
     it('can push transaction amount into transactionHistory array', function() {
-      transaction.withdraw('10/08/2018', 5);
-      expect(transaction.transactionHistory).toEqual([10, 20, -5]);
+      mockTransaction.withdraw('10/08/2018', 5);
+      expect(mockTransaction.transactionHistory).toEqual([10, 20, -5]);
     });
 
     it('can push transaction date into transactionDate array', function() {
-      transaction.withdraw('13/08/2018', 5);
-      expect(transaction.transactionDate).toEqual(['14/08/2018', '13/08/2018', '13/08/2018']);
+      mockTransaction.withdraw('13/08/2018', 5);
+      expect(mockTransaction.transactionDate).toEqual(['14/08/2018', '13/08/2018', '13/08/2018']);
     });
   });
 });
