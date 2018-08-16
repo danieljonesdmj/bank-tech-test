@@ -1,9 +1,17 @@
 describe('Transaction', function() {
 
   beforeEach(function() {
-    transaction = new Transaction();
+    var account = () => {
+      accountBalance: []
+    }
+
+    var printer = () => {
+      accountSummary: []
+    }
+
+    transaction = new Transaction(account.accountBalance, printer.accountSummary);
   });
-  
+
   describe('#deposit', function() {
     beforeEach(function() {
       transaction.transactionHistory = [10, 20];
