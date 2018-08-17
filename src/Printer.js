@@ -30,6 +30,6 @@ Printer.prototype.addWithdrawRow = function (dateArray, historyArray, balanceArr
       var debit = dateArray[i] + ' ||   || ' + (historyArray[i] + '.00') + ' || ' + (balanceArray[i] + '.00');
       this.accountSummary.length = i;
       this.accountSummary.push(debit);
-    };
+    }
   }
-}
+};

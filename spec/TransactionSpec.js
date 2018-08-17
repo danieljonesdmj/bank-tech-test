@@ -1,13 +1,14 @@
 describe('Transaction', function() {
 
   beforeEach(function() {
-    var mockAccount = () => {
-      accountBalance: []
-    }
 
-    var mockPrinter = () => {
-      accountSummary: []
-    }
+    var mockAccount = function() {
+      accountBalance = [];
+      };
+
+    var mockPrinter = function() {
+      accountSummary = [];
+    };
 
     mockTransaction = new Transaction(mockAccount.accountBalance, mockPrinter.accountSummary);
   });
